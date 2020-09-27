@@ -1,0 +1,19 @@
+$font-size: (
+  main: 16px, // the dependent value is in @function rem()
+  header-link: 13px,
+  nav-link: 22px,
+  heading: 48px,
+  heading-mobile: 36px,
+  input: 14px,
+);
+
+$font-weights: (
+  regular: 400,
+  medium: 500,
+  bold: 700,
+);
+
+$font-family: (
+  font-main: "Roboto",
+  font-code: "Ubuntu",
+);

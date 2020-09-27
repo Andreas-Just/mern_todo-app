@@ -1,0 +1,5 @@
+@function rem($_pixels) {
+  $convertRem: $_pixels / 16;
+  // number depends on variable map_get($font-size, main)
+  @return #{calc(#{$convertRem}rem + 1vmin)};
+}

@@ -1,0 +1,14 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.4s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin before($_width, $_height) {
+  position: absolute;
+  display: block;
+  width: $_width;
+  height: $_height;
+  content: "";
+}
