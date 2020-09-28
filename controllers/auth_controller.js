@@ -11,9 +11,17 @@ const registerUser = async (req, res) => {
     const error = validationResult(req);
 
     if (!error.isEmpty()) {
+      const message = error.array()
+        .reduce((arr, { msg }) => {
+          if (msg) {
+            arr.push(msg)
+          }
+          return arr;
+        }, []);
+
       return res.status(400).json({
         error: error.array(),
-        message: 'Incorrect registration data',
+        message,
       });
     }
 

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+app.use(express.json({ extended: true }));
 app.use(require('./routes/routes'));
 
 const PORT = process.env.PORT || 5000;
@@ -24,4 +25,4 @@ const start = async() => {
 
 start();
 
-// to be continues 53:53
+// to be continues 1:46:00

@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactHtmlParser from 'react-html-parser';
-import { Header } from 'semantic-ui-react';
 import { loadFlights } from './store';
 import * as selectors from './store/selectors';
 import './App.scss';
 import { getMovies } from './api/getMovies';
+import { useRoutes } from './routes';
 
 function App() {
+  const routes = useRoutes(false);
   const dispatch = useDispatch();
   const flights = useSelector(selectors.getFlightsAll);
 
@@ -18,7 +19,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header className="App-header" as="h2">Second Header</Header>
+      <h1>{routes}</h1>
+
       <pre>
         <ul className="App-List">
           {flights.departure.map(flight => (
