@@ -1,0 +1,14 @@
+@import "../../assets/scss/utils";
+
+.Nav {
+
+  &-Wrapper {
+    padding: 0 1rem;
+  }
+
+  &-Item {
+    &_active {
+      background-color: darken(map_get($colors, blu-darken), 4);
+    }
+  }
+}

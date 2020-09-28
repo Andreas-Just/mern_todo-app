@@ -32,3 +32,15 @@ p {
   font-size: rem(30);
   color: map_get($colors, bg-light);
 }
+
+@-webkit-keyframes autofill {
+  to {
+    color: inherit;
+    background: transparent;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
