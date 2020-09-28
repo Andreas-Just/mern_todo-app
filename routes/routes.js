@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const router = Router();
-// const { getRecipe, createRecipe, deleteRecipe, modifyRecipe } = require('../controllers/recipe_controller');
 const { registerUser, loginUser } = require('../controllers/auth_controller');
 
 router.post(

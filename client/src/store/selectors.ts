@@ -6,4 +6,5 @@ import { RootState } from './index';
 export const getLoading = (state: RootState) => state.loading.loading;
 export const getLoaded = (state: RootState) => state.loading.loaded;
 export const getError = (state: RootState) => state.loading.error;
-export const getFlightsAll = (state: RootState) => state.flights;
+export const getToken = (state: RootState) => state.token;
+export const getUserId = (state: RootState) => state.userId;

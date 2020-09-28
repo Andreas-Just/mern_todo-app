@@ -1,12 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { RouteComponentProps } from 'react-router';
 import { AuthPage } from './pages/AuthPage';
 import { TodosPage } from './pages/TodosPage';
 
-type Props = RouteComponentProps<{}>;
-
-export const useRoutes: React.FC<Props> = isAuthenticated => {
+export const useRoutes = (isAuthenticated: boolean) => {
   if (isAuthenticated) {
     return (
       <Switch>

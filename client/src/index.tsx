@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 import 'materialize-css';
 import './assets/scss/index.scss';
@@ -11,9 +11,9 @@ import store from './store';
 
 const Root = () => (
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <App />
-    </BrowserRouter>
+    </Router>
   </Provider>
 );
 

@@ -1,10 +1,12 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import './AuthPage.scss';
-import { useHttp } from '../../hooks/httpHooks';
-import { useMessage } from '../../hooks/message';
+import { useHttp } from '../../hooks/httpHook';
+import { useMessage } from '../../hooks/messageHook';
+import { useAuth } from '../../hooks/authHook';
 
 export const AuthPage = () => {
   const message = useMessage();
+  const { login } = useAuth();
   const { loading, request, error, clearError } = useHttp();
   const [form, setForm] = useState({ email: '', password: '' });
 
@@ -24,10 +26,17 @@ export const AuthPage = () => {
     } catch (err) {}
   };
 
+  const loginHandler = async () => {
+    try {
+      const data = await request('/api/auth/login', 'POST', {...form});
+      login(data.token, data.userId);
+    } catch (err) {}
+  };
+
   return (
     <div className="AuthPage row">
       <div className="col s6 offset-s3">
-        <h2>TodoApp Application</h2>
+        <h2>Auth Page</h2>
         <div className="AuthPage-Card card blue darken-4">
           <div className="AuthPage-Content card-content white-text">
             <span className="card-title">Authorization</span>
@@ -39,7 +48,7 @@ export const AuthPage = () => {
                   type="text"
                   className="AuthPage-Input"
                   onChange={changeHandler}
-                  autoComplete="off"
+                  // autoComplete="off"
                 />
                 <label htmlFor="email">Email</label>
               </div>
@@ -58,6 +67,7 @@ export const AuthPage = () => {
           <div className="AuthPage-Action card-action">
             <button
               className="AuthPage-Btn btn orange darken-4"
+              onClick={loginHandler}
               disabled={loading}
             >
               Login
