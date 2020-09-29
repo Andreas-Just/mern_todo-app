@@ -1,7 +1,13 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
+const auth = require('../middleware/authMiddleware');
 const router = Router();
 const { registerUser, loginUser } = require('../controllers/auth_controller');
+const {
+  generateTodo,
+  getTodos,
+  getTodo
+} = require('../controllers/todo_controller');
 
 router.post(
   '/api/auth/register',
@@ -28,6 +34,12 @@ router.post(
   ],
   loginUser,
 );
+
+router.post('/api/todo/generate', auth, generateTodo);
+
+router.get('/api/todo/', auth, getTodos);
+
+router.get('/api/todo/:id', auth, getTodo);
 
 // router.get('/api/recipe', getRecipe => controller => function);
 

@@ -75,7 +75,7 @@ const loginUser = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.json({ token, userId: user.id }); ////////Todo куда это идет?///////////
+    res.json({ token, userId: user.id });////Todo куда это идет?——————————
 
   } catch (err) {
     res.status(500).json({ message: 'Something went wrong, please try again' });

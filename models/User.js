@@ -12,7 +12,7 @@ const userSchema = new Schema({
   },
   todos: [{
     type: Types.ObjectId,
-    ref: 'Todos',
+    ref: 'Todo',
   }]
 });
 
