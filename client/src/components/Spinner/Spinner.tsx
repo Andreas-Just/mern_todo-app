@@ -1,7 +1,7 @@
 import React from 'react';
 import './Spinner.scss';
 
-const Spinner = () => (
+export const Spinner = () => (
   <div className="Spinner">
     <h2 className="Spinner-TextInfo">
       Loa
@@ -17,4 +17,3 @@ const Spinner = () => (
   </div>
 );
 
-export default Spinner;

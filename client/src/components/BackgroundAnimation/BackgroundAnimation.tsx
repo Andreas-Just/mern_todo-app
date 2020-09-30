@@ -1,7 +1,7 @@
 import React from 'react';
 import './BackgroundAnimation.scss';
 
-const BackgroundAnimation = () => (
+export const BackgroundAnimation = () => (
   <div className="Hero">
     <div className="Cube Cube_gradient" />
     <div className="Cube Cube_gradient" />
@@ -13,4 +13,3 @@ const BackgroundAnimation = () => (
   </div>
 );
 
-export default BackgroundAnimation;

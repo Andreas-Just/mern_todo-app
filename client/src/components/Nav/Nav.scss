@@ -6,9 +6,27 @@
     padding: 0 1rem;
   }
 
+  &-Logo.brand-logo {
+    left: 14px;
+    transform: translateX(0);
+  }
+
+   &-List {
+    display: block !important;
+  }
+
   &-Item {
     &_active {
       background-color: darken(map_get($colors, blu-darken), 4);
+    }
+  }
+}
+
+@media only screen and (max-width: $middleMobileScreen) {
+  .Nav {
+
+    &-LogoText {
+      display: none;
     }
   }
 }

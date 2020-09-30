@@ -50,6 +50,7 @@ export const AuthPage = () => {
                   id="email"
                   name="email"
                   type="text"
+                  value={form.email}
                   className="AuthPage-Input"
                   onChange={changeHandler}
                   // autoComplete="off"
@@ -62,6 +63,7 @@ export const AuthPage = () => {
                   id="password"
                   name="password"
                   type="password"
+                  value={form.password}
                   className="AuthPage-Input"
                   onChange={changeHandler}
                 />

@@ -11,7 +11,8 @@ export const Nav: React.FC<Props> = ({ isAuthenticated }) => {
   const history = useHistory();
   const { logout } = useAuth();
 
-  const logoutHandler = () => {
+  const logoutHandler = (e: React.SyntheticEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     logout();
     history.push('/');
   };
@@ -19,7 +20,9 @@ export const Nav: React.FC<Props> = ({ isAuthenticated }) => {
   return (
     <nav className="Nav">
       <div className="Nav-Wrapper blue darken-4 nav-wrapper">
-        <span className="Nav-Logo brand-logo center">Note Book</span>
+        <div className="Nav-Logo brand-logo">
+          <span className="Nav-LogoText">Note Book</span>
+        </div>
         <ul id="nav-mobile" className="Nav-List right hide-on-med-and-down">
           {isAuthenticated
             ? (
@@ -43,7 +46,9 @@ export const Nav: React.FC<Props> = ({ isAuthenticated }) => {
                   </NavLink>
                 </li>
                 <li>
-                  <a onClick={logoutHandler} className="Nav-Item">Sing Owt</a>
+                  <a href="/" onClick={logoutHandler} className="Nav-Item">
+                    Sing Owt
+                  </a>
                 </li>
               </>
             ) : (
