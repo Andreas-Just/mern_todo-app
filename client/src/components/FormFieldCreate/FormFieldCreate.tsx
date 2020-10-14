@@ -9,7 +9,7 @@ type Props = {
   value: string;
   label: string;
   placeholder: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onSelect: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 type Ref = HTMLInputElement;
@@ -20,7 +20,7 @@ export const FormFieldCreate = forwardRef<Ref, Props>(({
   value,
   label,
   placeholder,
-  onChange,
+  onSelect,
 }, ref) => (
   <div className="FormFieldCreate input-field">
     <input
@@ -32,10 +32,11 @@ export const FormFieldCreate = forwardRef<Ref, Props>(({
       placeholder={placeholder}
       className={cn({
         'FormFieldCreate-Input': true,
+        [`FormFieldCreate-Input_${name}`]: true,
         'datepicker': name === 'date',
         'timepicker': name === 'time',
       })}
-      onSelect={onChange}
+      onSelect={onSelect}
     />
     <label htmlFor={name}>{label}</label>
   </div>

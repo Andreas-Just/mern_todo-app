@@ -97,7 +97,7 @@ export const CreatePage = () => {
               label={label}
               placeholder={placeholder}
               value={task[name]}
-              onChange={name === 'date' ? dateHandler : changeHandler}
+              onSelect={name === 'date' ? dateHandler : changeHandler}
             />
           ))}
         </div>

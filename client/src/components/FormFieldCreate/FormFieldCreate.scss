@@ -1,0 +1,54 @@
+@import "../../assets/scss/utils";
+$darkblue: map_get($colors, blu-darken);
+
+.FormFieldCreate {
+
+  &-Input[type]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid $darkblue;
+    box-shadow: inset 0 -4px 5px -5px lighten($darkblue, 25);
+  }
+
+  &-Input[type]:not(.browser-default):focus:not([readonly]) + label {
+    color: lighten($darkblue, 10);
+  }
+
+  .datepicker-date-display,
+  .timepicker-digital-display {
+    background-color: $darkblue;
+  }
+
+  .month-prev:focus,
+  .month-next:focus,
+  .datepicker-table td.is-selected,
+  .datepicker-table td.is-selected.is-today {
+    background-color: lighten($darkblue, 10);
+    color: white;
+  }
+
+  .datepicker-cancel,
+  .datepicker-done,
+  .datepicker-table td.is-today,
+  .timepicker-close {
+    color: $darkblue;
+  }
+
+  .datepicker-day-button:focus,
+  .timepicker-tick.active, .timepicker-tick:hover {
+    background-color: rgba($darkblue, 0.25);
+  }
+
+  .timepicker-canvas {
+    &-bg,
+    &-bearing {
+      fill: lighten($darkblue, 10);
+    }
+
+    line {
+      stroke: lighten($darkblue, 10);
+    }
+  }
+}
+
+.dropdown-content.select-dropdown li > span {
+  color: $darkblue;
+}

@@ -23,24 +23,3 @@ p {
     background-color: lighten(lightskyblue, 22%);
   }
 }
-
-.App-header.ui.header {
-  @extend %flex-column-center;
-  background-color: map_get($colors, bg-dark);
-  margin: 0;
-  min-height: 100vh;
-  font-size: rem(30);
-  color: map_get($colors, bg-light);
-}
-
-@-webkit-keyframes autofill {
-  to {
-    color: inherit;
-    background: transparent;
-  }
-}
-
-input:-webkit-autofill {
-  -webkit-animation-name: autofill;
-  -webkit-animation-fill-mode: both;
-}

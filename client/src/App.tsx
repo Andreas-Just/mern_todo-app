@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { getMovies } from './api/getMovies';
+import React from 'react';
 
 import { useRoutes } from './routes';
 import { useAuth } from './hooks/authHook';
@@ -10,10 +9,6 @@ function App() {
   const { token } = useAuth();
   const isAuthenticated = !!token;
   const routes = useRoutes(isAuthenticated);
-
-  useEffect(() => {
-    getMovies('Star') // .env example
-  }, []);
 
   return (
     <div className="App">
