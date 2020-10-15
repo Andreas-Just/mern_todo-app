@@ -1,10 +1,13 @@
 import React, { ChangeEvent, useEffect, useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { useHttp } from '../../hooks/httpHook';
+import { getToken } from '../../store/selectors';
 import { FormFieldCreate } from '../../components/FormFieldCreate';
 import './CreatePage.scss';
+import { useMessage } from '../../hooks/messageHook';
 
 type NewTaskValues = {
-  date: string;
+  date: Date | string;
   time: string;
   name: string;
   description: string;
@@ -47,10 +50,17 @@ const defaultValues: NewTaskValues = {
 };
 
 export const CreatePage = () => {
-  const { loading } = useHttp();
+  const token = useSelector(getToken);
+  const message = useMessage();
+  const { loading, request, error, clearError } = useHttp();
   const [task, setTask] = useState(defaultValues);
   const dateRef = useRef(null);
   const timeRef = useRef(null);
+
+  useEffect(() => {
+    message(error);
+    clearError();
+  }, [error, message, clearError]);
 
   useEffect(() => {
     window.M.updateTextFields();
@@ -70,18 +80,23 @@ export const CreatePage = () => {
     const elem = dateRef.current;
     M.Datepicker.init(elem!, {
       defaultDate: new Date(),
-      format: 'dd/mm/yyyy',
-      onSelect: (value: any) => {
-        const date = value.toLocaleString('en-GB').split(',')[0];
-        setTask({ ...task, date })
+      format: 'ddd dd mmmm yyyy',
+      onSelect: (value: Date) => {
+        setTask({ ...task, date: value })
       },
     });
   };
 
-  const createHandler = () => {
+  const createHandler = async () => {
+    try {
+      const data = await request('/api/todo/generate', 'POST', task, {
+        Authorization: `Bearer ${token}`
+      });
+      message(data.message);
+    } catch (err) {}
 
   };
-  console.log(task);
+
   return (
     <div className="CreatePage row">
       <h2>Create Page</h2>

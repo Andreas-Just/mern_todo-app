@@ -14,6 +14,7 @@ const userSchema = new Schema({
     type: Types.ObjectId,
     ref: 'Todo',
   }]
-});
+},
+{ versionKey: false });
 
 module.exports = model('User', userSchema);

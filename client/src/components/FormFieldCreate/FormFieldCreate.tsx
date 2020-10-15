@@ -6,7 +6,7 @@ type Props = {
   children?: ReactNode;
   id: string;
   name: string;
-  value: string;
+  value: string | any;
   label: string;
   placeholder: string;
   onSelect: React.ChangeEventHandler<HTMLInputElement>;
@@ -41,4 +41,3 @@ export const FormFieldCreate = forwardRef<Ref, Props>(({
     <label htmlFor={name}>{label}</label>
   </div>
 ));
-

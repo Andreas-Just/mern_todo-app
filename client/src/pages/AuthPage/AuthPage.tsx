@@ -53,7 +53,6 @@ export const AuthPage = () => {
                   value={form.email}
                   className="AuthPage-Input"
                   onChange={changeHandler}
-                  // autoComplete="off"
                 />
                 <label htmlFor="email">Email</label>
               </div>

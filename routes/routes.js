@@ -41,6 +41,4 @@ router.get('/api/todo/', auth, getTodos);
 
 router.get('/api/todo/:id', auth, getTodo);
 
-// router.get('/api/recipe', getRecipe => controller => function);
-
 module.exports = router;

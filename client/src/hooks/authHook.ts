@@ -36,5 +36,11 @@ export const useAuth = () => {
     }
   }, [login]);
 
+  useEffect(() => {
+    if (token) {
+      setTimeout(() => localStorage.removeItem(storageName), 60 * 60 * 1000);
+    }
+  }, [token]);
+
   return { login, logout, token, userId };
 };

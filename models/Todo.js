@@ -9,6 +9,11 @@ const todoSchema = new Schema({
     type: String,
     required: true
   },
+  isCompleted: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
   date: {
     type: Date,
     default: Date.now,
@@ -16,22 +21,13 @@ const todoSchema = new Schema({
   },
   time: {
     type: String,
-    default: '00:00',
     required: true,
   },
   owner: [{
     type: Types.ObjectId,
     ref: 'User',
   }]
-});
+},
+{ versionKey: false });
 
 module.exports = model('Todo', todoSchema);
-
-/*
-const localDate = new Date();
-const localeTime = `
-  ${localDate.getHours().toString().padStart(2, '0')}
-  :
-  ${localDate.getMinutes().toString().padStart(2, '0')}
-`;
-*/
