@@ -1,11 +1,15 @@
 const Todo = require('../models/Todo');
 
+// Task creation
 const generateTodo = async (req, res) => {
   try {
     const { name, description, date, time } =  req.body;
     const existing = await Todo.findOne({ date, time });
 
     if (existing) {
+      res.status(403).json({
+        message: 'Task with such date and time already exists'
+      });
       return res.json({ todo: existing });
     }
 
@@ -20,6 +24,7 @@ const generateTodo = async (req, res) => {
   }
 };
 
+// Getting all tasks
 const getTodos = async (req, res) => {
   try {
     const todos = await Todo.find({ owner: req.user.userId });
@@ -30,6 +35,7 @@ const getTodos = async (req, res) => {
   }
 };
 
+// Getting a task by ID
 const getTodo = async (req, res) => {
   try {
     const todo = await Todo.findById(req.params.id);

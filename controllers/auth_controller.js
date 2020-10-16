@@ -1,30 +1,12 @@
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
-const { validationResult } = require('express-validator');
 const User = require('../models/User');
 
 
 // User registration
 const registerUser = async (req, res) => {
   try {
-    const error = validationResult(req);
-
-    if (!error.isEmpty()) {
-      const message = error.array()
-        .reduce((arr, { msg }) => {
-          if (msg) {
-            arr.push(msg)
-          }
-          return arr;
-        }, []);
-
-      return res.status(400).json({
-        error: error.array(),
-        message,
-      });
-    }
-
     const { email, password } = req.body;
     const candidate = await User.findOne({ email });
 
@@ -41,21 +23,11 @@ const registerUser = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Something went wrong, please try again' });
   }
-
 };
 
 // User login to the system
 const loginUser = async (req, res) => {
   try {
-    const error = validationResult(req);
-
-    if (!error.isEmpty()) {
-      return res.status(400).json({
-        error: error.array(),
-        message: 'Invalid login data',
-      });
-    }
-
     const { email, password } = req.body;
     const user = await User.findOne({ email });
 
@@ -66,7 +38,7 @@ const loginUser = async (req, res) => {
     const isMatchPassword = await bcrypt.compare(password, user.password);
 
     if (!isMatchPassword) {
-      return res.status(400).json({ message: 'Login and password do not match.' });
+      return res.status(400).json({ message: 'Login and password do not match' });
     }
 
     const token = jwt.sign(
@@ -80,10 +52,6 @@ const loginUser = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Something went wrong, please try again' });
   }
-
 };
 
-module.exports = {
-  registerUser,
-  loginUser
-};
+module.exports = { registerUser, loginUser };
