@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { STORAGE_NAME } from '../constants/localStorage';
 
 export const useHttp = () => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,9 @@ export const useHttp = () => {
         const data = await response.json();
 
         if (!response.ok) {
+          if (data.message === 'No authorization') {
+            localStorage.removeItem(STORAGE_NAME)
+          }
           throw data.message || new Error('Something went wrong');
         }
 

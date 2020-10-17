@@ -95,7 +95,7 @@ export const CreatePage = () => {
       message(data.message);
     } catch (err) {}
   };
-  console.log(task);
+  // console.log(task);
   return (
     <div className="CreatePage row">
       <h2>Create Page</h2>
