@@ -10,7 +10,7 @@ export const setToken = (jwtToken: string): TokenAction => ({
   jwtToken,
 });
 
-const reduce = (token: string = '', { type, jwtToken }: TokenAction): string => {
+const reduce = (token = '', { type, jwtToken }: TokenAction): string => {
   switch (type) {
     case SET_TOKEN:
       return jwtToken;

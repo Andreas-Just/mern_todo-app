@@ -1,5 +1,5 @@
 @import "../../assets/scss/utils";
-$darkblue: map_get($colors, blu-darken);
+$darkblue: map_get($colors, blue-darken);
 
 .FormFieldCreate {
 
@@ -33,7 +33,8 @@ $darkblue: map_get($colors, blu-darken);
   }
 
   .datepicker-day-button:focus,
-  .timepicker-tick.active, .timepicker-tick:hover {
+  .timepicker-tick.active,
+  .timepicker-tick:hover {
     background-color: rgba($darkblue, 0.25);
   }
 

@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode} from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import cn from 'classnames';
 import './FormFieldCreate.scss';
 
@@ -33,8 +33,8 @@ export const FormFieldCreate = forwardRef<Ref, Props>(({
       className={cn({
         'FormFieldCreate-Input': true,
         [`FormFieldCreate-Input_${name}`]: true,
-        'datepicker': name === 'date',
-        'timepicker': name === 'time',
+        datepicker: name === 'date',
+        timepicker: name === 'time',
       })}
       onSelect={onSelect}
     />

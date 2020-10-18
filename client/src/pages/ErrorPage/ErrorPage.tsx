@@ -5,4 +5,3 @@ type Props = {
 };
 
 export const ErrorPage: React.FC<Props> = ({ message }) => <h2>{message}</h2>;
-

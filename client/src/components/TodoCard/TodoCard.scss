@@ -1,0 +1,27 @@
+@import "../../assets/scss/utils";
+
+.TodoCard {
+  text-align: left;
+
+  &-Date,
+  &-Time {
+    margin: 0 !important;
+  }
+
+  &-Date {
+    font-weight: 500 !important;
+    text-align: center;
+    color: lighten(map_get($colors, text), 25%);
+  }
+
+  &-Text {
+    margin-top: 10px !important;
+  }
+
+  &-Completed {
+    color: green;
+    &_no {
+      color: red;
+    }
+  }
+}

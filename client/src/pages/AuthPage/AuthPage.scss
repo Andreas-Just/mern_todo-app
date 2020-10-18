@@ -2,6 +2,12 @@
 $orange: map_get($colors, auth-orange);
 
 .AuthPage {
+  width: 100%;
+
+  &-Title {
+    margin-bottom: 15vh;
+  }
+
   input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
@@ -25,8 +31,7 @@ $orange: map_get($colors, auth-orange);
 
   &-Input[type]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid $orange;
-    box-shadow:
-      0 5px 5px -5px #444,
+    box-shadow: 0 5px 5px -5px #444,
       inset 0 -5px 5px -5px lighten($orange, 25);
 
     &::placeholder {

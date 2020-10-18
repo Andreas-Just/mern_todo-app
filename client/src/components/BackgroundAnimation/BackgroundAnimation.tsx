@@ -12,4 +12,3 @@ export const BackgroundAnimation = () => (
     <div className="Cube Cube_gradient" />
   </div>
 );
-

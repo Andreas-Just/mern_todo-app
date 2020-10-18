@@ -1,12 +1,14 @@
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getToken, getUserId } from '../store/selectors';
-import { setToken } from '../store/token'
+import { getReady, getToken, getUserId } from '../store/selectors';
+import { setToken } from '../store/token';
+import { setReady } from '../store/ready';
 import { setUserId } from '../store/userId';
 import { STORAGE_NAME } from '../constants/localStorage';
 
 export const useAuth = () => {
-  const token = useSelector(getToken) || false;
+  const token = useSelector(getToken);
+  const ready = useSelector(getReady);
   const userId = useSelector(getUserId);
   const dispatch = useDispatch();
 
@@ -28,21 +30,22 @@ export const useAuth = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const  data = JSON.parse(localStorage.getItem(STORAGE_NAME)!);
+    const data = JSON.parse(localStorage.getItem(STORAGE_NAME)!);
 
     if (data && data.token) {
       login(data.token, data.userId);
     }
-  }, [login]);
+
+    dispatch(setReady(true));
+  }, [login, dispatch]);
 
   useEffect(() => {
-    if (token && typeof token === 'string') {
-      console.log('start')
+    if (token && ready) {
       setTimeout(() => localStorage.removeItem(STORAGE_NAME), 60 * 60 * 1000);
     }
-  }, [token]);
+  }, [token, ready, dispatch]);
 
-  console.log(!!token, typeof token);
-
-  return { login, logout, token, userId };
+  return {
+    login, logout, token, userId, ready,
+  };
 };

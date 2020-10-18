@@ -4,32 +4,37 @@ import { HomePage } from './pages/HomePage';
 import { AuthPage } from './pages/AuthPage';
 import { TodosPage } from './pages/TodosPage';
 import { CreatePage } from './pages/CreatePage';
+import { DetailPage } from './pages/DetailPage';
 import { ErrorPage } from './pages/ErrorPage';
 
 export const useRoutes = (isAuthenticated: boolean) => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route path="/todos">
+        <Route path="/todos" exact>
           <TodosPage />
         </Route>
 
-        <Route path="/create">
+        <Route path="/create" exact>
           <CreatePage />
         </Route>
 
-        <Redirect to="/todos" />
+        <Route path="/detail/:id">
+          <DetailPage />
+        </Route>
+
+        <Redirect to="/create" />
       </Switch>
     );
   }
 
   return (
     <Switch>
-      <Route path="/login">
+      <Route path="/login" exact>
         <AuthPage />
       </Route>
 
-      <Route path="/home">
+      <Route path="/home" exact>
         <HomePage />
       </Route>
 

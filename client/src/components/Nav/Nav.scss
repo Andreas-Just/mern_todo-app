@@ -11,13 +11,13 @@
     transform: translateX(0);
   }
 
-   &-List {
+  &-List.hide-on-med-and-down {
     display: block !important;
   }
 
   &-Item {
     &_active {
-      background-color: darken(map_get($colors, blu-darken), 4);
+      background-color: darken(map_get($colors, blue-darken), 4);
     }
   }
 }

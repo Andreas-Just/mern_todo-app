@@ -7,7 +7,7 @@ span.badge {
   font-size: 1rem;
   line-height: $badge-height;
   height: $badge-height;
-  color: color('grey', 'darken-1');
+  color: color("grey", "darken-1");
   float: right;
   box-sizing: border-box;
 
@@ -41,9 +41,11 @@ nav ul a span.badge {
 .collection-item span.badge {
   margin-top: calc(#{$collection-line-height / 2} - #{$badge-height / 2});
 }
+
 .collapsible span.badge {
   margin-left: auto;
 }
+
 .sidenav span.badge {
   margin-top: calc(#{$sidenav-line-height / 2} - #{$badge-height / 2});
 }

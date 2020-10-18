@@ -1,10 +1,11 @@
-import React, { ChangeEvent, useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
-import { useHttp } from '../../hooks/httpHook';
 import { getToken } from '../../store/selectors';
+import { useHttp } from '../../hooks/httpHook';
+import { useMessage } from '../../hooks/messageHook';
 import { FormFieldCreate } from '../../components/FormFieldCreate';
 import './CreatePage.scss';
-import { useMessage } from '../../hooks/messageHook';
 
 type NewTaskValues = {
   date: Date | string;
@@ -51,8 +52,11 @@ const defaultValues: NewTaskValues = {
 
 export const CreatePage = () => {
   const token = useSelector(getToken);
+  const history = useHistory();
   const message = useMessage();
-  const { loading, request, error, clearError } = useHttp();
+  const {
+    loading, request, error, clearError,
+  } = useHttp();
   const [task, setTask] = useState(defaultValues);
   const dateRef = useRef(null);
   const timeRef = useRef(null);
@@ -67,9 +71,10 @@ export const CreatePage = () => {
     window.M.AutoInit();
   }, []);
 
-  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.name === 'time') {
       const elem = timeRef.current;
+
       M.Timepicker.init(elem!, { twelveHour: false });
     }
 
@@ -78,11 +83,12 @@ export const CreatePage = () => {
 
   const dateHandler = () => {
     const elem = dateRef.current;
+
     M.Datepicker.init(elem!, {
       defaultDate: new Date(),
       format: 'ddd dd mmmm yyyy',
       onSelect: (value: Date) => {
-        setTask({ ...task, date: value })
+        setTask({ ...task, date: value });
       },
     });
   };
@@ -90,15 +96,17 @@ export const CreatePage = () => {
   const createHandler = async () => {
     try {
       const data = await request('/api/todo/generate', 'POST', task, {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       });
+
       message(data.message);
+      history.push(`/detail/${data.todo._id}`);
     } catch (err) {}
   };
-  // console.log(task);
+
   return (
     <div className="CreatePage row">
-      <h2>Create Page</h2>
+      <h4>Create Page</h4>
       <div className="CreatePage-Form col s8 offset-s2 card blue-grey lighten-5">
         <div className="CreatePage-Content card-content">
           <span className="card-title">Create Task</span>
@@ -117,6 +125,7 @@ export const CreatePage = () => {
         </div>
         <div className="CreatePage-Action card-action">
           <button
+            type="button"
             className="CreatePage-Btn btn blue darken-4"
             onClick={createHandler}
             disabled={loading}

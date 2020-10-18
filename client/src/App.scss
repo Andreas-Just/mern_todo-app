@@ -1,5 +1,10 @@
 @import "assets/scss/utils";
 
+#root {
+  @extend %flex-column-center;
+  height: 100vh;
+}
+
 br {
   display: none;
 }
@@ -9,6 +14,9 @@ p {
 }
 
 .App {
+  @extend %flex-column-center;
+  flex-grow: 1;
+  width: 100%;
   text-align: center;
   font-size: rem(12);
 
@@ -21,5 +29,12 @@ p {
     display: inline-block;
     color: indigo;
     background-color: lighten(lightskyblue, 22%);
+  }
+
+  &-Main {
+    @extend %flex-column-center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    width: 100%;
   }
 }

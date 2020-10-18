@@ -1,24 +1,12 @@
 // eslint-disable-next-line
 /// <reference types="react-scripts" />
-interface IFlights {
+interface ITodo {
   [key: string]: T;
-  arrival: IFlight[];
-  departure: IFlight[];
-}
-
-interface IFlight {
-  [key: string]: T;
-  ID: number;
-  actual: string;
-  airline: IAirline;
-  'airportToID.city_en'?: string;
-  'airportFromID.city_en'?: string;
-  checkinNo?: string;
-  codeShareData: Array<ICodeData>;
-  gateNo?: string;
-  status: typeof Status;
-  timeDepShedule: string;
-  timeToStand: string;
-  timeTakeofFact?: string;
-  term: string;
+  _id: string;
+  isCompleted: boolean;
+  owner: string[];
+  name: string;
+  description: string;
+  date: any;
+  time: string;
 }

@@ -31,7 +31,7 @@ export const Nav: React.FC<Props> = ({ isAuthenticated }) => {
                   <NavLink
                     to="/todos"
                     className="Nav-Item"
-                    activeClassName='Nav-Item_active'
+                    activeClassName="Nav-Item_active"
                   >
                     List
                   </NavLink>
@@ -40,7 +40,7 @@ export const Nav: React.FC<Props> = ({ isAuthenticated }) => {
                   <NavLink
                     to="/create"
                     className="Nav-Item"
-                    activeClassName='Nav-Item_active'
+                    activeClassName="Nav-Item_active"
                   >
                     Create
                   </NavLink>
@@ -57,7 +57,7 @@ export const Nav: React.FC<Props> = ({ isAuthenticated }) => {
                   <NavLink
                     to="/home"
                     className="Nav-Item"
-                    activeClassName='Nav-Item_active'
+                    activeClassName="Nav-Item_active"
                   >
                     Home
                   </NavLink>
@@ -66,17 +66,15 @@ export const Nav: React.FC<Props> = ({ isAuthenticated }) => {
                   <NavLink
                     to="/login"
                     className="Nav-Item"
-                    activeClassName='Nav-Item_active'
+                    activeClassName="Nav-Item_active"
                   >
                     Sing In
                   </NavLink>
                 </li>
               </>
-            )
-          }
+            )}
         </ul>
       </div>
     </nav>
   );
 };
-

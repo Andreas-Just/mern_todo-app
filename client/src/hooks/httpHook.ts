@@ -10,6 +10,7 @@ export const useHttp = () => {
       setLoading(true);
       try {
         if (body) {
+          /* eslint-disable no-param-reassign */
           body = JSON.stringify(body);
           headers['Content-Type'] = 'application/json';
         }
@@ -19,8 +20,9 @@ export const useHttp = () => {
 
         if (!response.ok) {
           if (data.message === 'No authorization') {
-            localStorage.removeItem(STORAGE_NAME)
+            localStorage.removeItem(STORAGE_NAME);
           }
+
           throw data.message || new Error('Something went wrong');
         }
 
@@ -32,10 +34,12 @@ export const useHttp = () => {
         setError(err);
         throw err;
       }
-    }, []
+    }, [],
   );
 
   const clearError = useCallback(() => setError(null), []);
 
-  return { loading, request, error, clearError }
-}
+  return {
+    loading, request, error, clearError,
+  };
+};

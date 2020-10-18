@@ -48,6 +48,12 @@ module.exports = {
       {"blankLine": "always", "prev": "directive", "next": "*"},
       {"blankLine": "always", "prev": "block-like", "next": "*"},
     ],
+    "no-empty": [
+      "error",
+      { "allowEmptyCatch": true }
+    ],
+    "no-underscore-dangle": 0,
+    "no-nested-ternary": 0,
 
     // React
     "react/prop-types": 0,
@@ -58,12 +64,18 @@ module.exports = {
     "react/jsx-props-no-spreading": 0,
     "react/state-in-constructor": [2, "never"],
     "react-hooks/rules-of-hooks": 2,
+    "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/label-has-for": [2, {
       "components": ["Label"],
       "required": {
         "some": ["id", "nesting"]
       },
       "allowChildren": true
+    }],
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "hrefLeft", "hrefRight" ],
+      "aspects": [ "preferButton" ]
     }],
 
     // Typescript

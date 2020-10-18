@@ -10,7 +10,7 @@ export const setUserId = (id: string): UserIdAction => ({
   id,
 });
 
-const reduce = (userId: string = '', { type, id }: UserIdAction): string => {
+const reduce = (userId = '', { type, id }: UserIdAction): string => {
   switch (type) {
     case SET_USER_ID:
       return id;
