@@ -5,7 +5,8 @@
 node_modules
 
 # production
-config
+config/default.json
+config/production.json
 
 # misc
 .DS_Store

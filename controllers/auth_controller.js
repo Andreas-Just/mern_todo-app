@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const config = require('config');
+const { jwtSecret } = require('../config/config');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -43,7 +43,7 @@ const loginUser = async (req, res) => {
 
     const token = jwt.sign(
       { userId: user.id },
-      config.get('jwtSecret'),
+      jwtSecret,
       { expiresIn: '1h' }
     );
 
